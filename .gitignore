@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+*.egg-info/
+
+# Frontend
+node_modules/
+dashboard/dist/
+
+# Runtime/private data
+.env
+.env.*
+!.env.example
+data/
+state/
+logs/
+sessions/
+memories/
+cron/output/
+*.log
+*.silk
+*.wav
+*.mp3
+
+# Credentials and local config
+config.yaml
+config.local.yaml
+*.pem
+*.key
+*.p12
+
+# Editor/OS
+.vscode/
+.idea/
+.DS_Store

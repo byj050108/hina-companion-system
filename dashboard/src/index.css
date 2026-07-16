@@ -1,0 +1,311 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: Inter, "Noto Sans SC", "Microsoft YaHei", ui-sans-serif, system-ui,
+    -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+
+  --color-hina-sky: #6bb6e8;
+  --color-hina-sky-deep: #3a8ee6;
+  --color-hina-sky-soft: #d9effb;
+  --color-hina-cloud: #e8f4fb;
+  --color-hina-sun: #f5e6a0;
+  --color-hina-leaf: #c8e89a;
+  --color-hina-line: #cfe5f2;
+}
+
+:root {
+  --hina-sky: #6bb6e8;
+  --hina-sky-deep: #3a8ee6;
+  --hina-cloud: #e8f4fb;
+  --hina-sun: #f5e6a0;
+  --hina-leaf: #c8e89a;
+  --hina-ink: #19364a;
+  --hina-muted: #557287;
+  --hina-line: #cfe5f2;
+  --hina-card: #fafdff;
+  --hina-shadow: rgba(48, 112, 155, 0.12);
+
+  font-family: var(--font-sans);
+  color: var(--hina-ink);
+  background: var(--hina-cloud);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  min-height: 100%;
+  background: var(--hina-cloud);
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at 8% 7%, rgba(255, 255, 255, 0.96), transparent 25rem),
+    radial-gradient(circle at 94% 18%, rgba(107, 182, 232, 0.2), transparent 28rem),
+    radial-gradient(circle at 65% 88%, rgba(245, 230, 160, 0.18), transparent 24rem),
+    linear-gradient(145deg, #eff9fe 0%, var(--hina-cloud) 52%, #f7fbfd 100%);
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+.house-panel,
+.soft-card {
+  border: 1px solid rgba(207, 229, 242, 0.9);
+  background: rgba(250, 253, 255, 0.96);
+  box-shadow: 0 14px 34px var(--hina-shadow);
+}
+
+.house-panel {
+  border-radius: 28px;
+}
+
+.soft-card {
+  border-radius: 28px;
+}
+
+.sidebar-shell {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.86);
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 16% 4%, rgba(255, 255, 255, 0.82), transparent 14rem),
+    linear-gradient(165deg, #dff3fd 0%, #b9dff5 48%, #91c9ec 100%);
+  box-shadow: 0 22px 52px rgba(45, 119, 166, 0.18);
+}
+
+.hina-avatar-frame {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  background: linear-gradient(145deg, #eefaff 0%, #9fd2f0 58%, #6bb6e8 100%);
+  box-shadow: 0 8px 18px rgba(58, 142, 230, 0.16);
+}
+
+.hina-avatar-sidebar {
+  height: 46px;
+  width: 46px;
+}
+
+.hina-avatar-header {
+  height: 48px;
+  width: 48px;
+}
+
+.hina-avatar-placeholder {
+  position: relative;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.hina-avatar-sun {
+  position: absolute;
+  right: 7px;
+  top: 7px;
+  height: 17px;
+  width: 17px;
+  color: #f0bf45;
+  fill: #f5e6a0;
+  stroke-width: 2;
+}
+
+.hina-avatar-cloud {
+  position: absolute;
+  bottom: 7px;
+  left: 7px;
+  height: 24px;
+  width: 29px;
+  color: white;
+  fill: rgba(255, 255, 255, 0.92);
+  stroke-width: 1.5;
+}
+
+.sidebar-note {
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.52);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.icon-button {
+  display: inline-flex;
+  height: 42px;
+  width: 42px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--hina-line);
+  border-radius: 14px;
+  background: white;
+  color: var(--hina-muted);
+  transition: 160ms ease;
+}
+
+.icon-button:hover {
+  border-color: var(--hina-sky);
+  color: var(--hina-sky-deep);
+  transform: translateY(-1px);
+}
+
+.status-pill {
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid #b9dca0;
+  border-radius: 999px;
+  padding: 0.45rem 0.75rem;
+  background: rgba(200, 232, 154, 0.38);
+  color: #397044;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.eyebrow {
+  font-size: 0.7rem;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--hina-sky-deep);
+}
+
+.panel-title {
+  margin-top: 0.25rem;
+  font-size: 1.125rem;
+  font-weight: 680;
+  letter-spacing: -0.02em;
+  color: var(--hina-ink);
+}
+
+.action-button {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 680;
+  line-height: 1.25rem;
+  text-align: center;
+  transition: 160ms ease;
+}
+
+.action-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: saturate(1.05);
+  box-shadow: 0 8px 18px rgba(48, 112, 155, 0.12);
+}
+
+.action-button:disabled {
+  opacity: 0.46;
+}
+
+.action-sky {
+  border-color: #91c9ec;
+  color: #155f9b;
+  background: #dff2fd;
+}
+
+.action-rose {
+  border-color: #f5c2c7;
+  color: #a94352;
+  background: #fff0f2;
+}
+
+.action-sun {
+  border-color: #ead58a;
+  color: #7b651e;
+  background: #fff8d6;
+}
+
+.action-cloud {
+  border-color: var(--hina-line);
+  color: #315f7c;
+  background: #f4fbff;
+}
+
+.action-leaf {
+  border-color: #b9dca0;
+  color: #397044;
+  background: #edf8df;
+}
+
+.log-panel {
+  border: 1px solid #28698f;
+  background: linear-gradient(160deg, #174766 0%, #123b59 100%);
+}
+
+.log-scroll {
+  scrollbar-color: #6bb6e8 transparent;
+  scrollbar-width: thin;
+}
+
+.dream-orb {
+  position: fixed;
+  z-index: 0;
+  border-radius: 999px;
+  filter: blur(4px);
+  pointer-events: none;
+}
+
+.dream-orb-one {
+  right: -7rem;
+  top: -8rem;
+  height: 24rem;
+  width: 24rem;
+  background: rgba(107, 182, 232, 0.18);
+}
+
+.dream-orb-two {
+  bottom: -10rem;
+  left: 24%;
+  height: 28rem;
+  width: 28rem;
+  background: rgba(245, 230, 160, 0.15);
+}
+
+@media (max-width: 767px) {
+  .house-panel,
+  .soft-card {
+    border-radius: 24px;
+  }
+
+  .action-button {
+    min-height: 44px;
+    padding: 0.7rem 0.65rem;
+    font-size: 0.8125rem;
+  }
+
+  .dream-orb-one {
+    right: -12rem;
+  }
+
+  .dream-orb-two {
+    left: -10rem;
+  }
+}

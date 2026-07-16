@@ -1,0 +1,32 @@
+scheduler:
+  quiet_minutes_after_user_message: 20
+  retry_cooldown_minutes: 10
+  reservation_minutes: 15
+  active_hours: [8, 22]
+
+cooldowns_minutes:
+  task_reminder:
+    task_reminder: 60
+    daily_article: 30
+    checkin: 30
+    web_proactive: 30
+  daily_article:
+    task_reminder: 120
+    daily_article: 120
+    checkin: 120
+    web_proactive: 120
+  checkin:
+    task_reminder: 120
+    daily_article: 120
+    checkin: 120
+    web_proactive: 120
+  web_proactive:
+    task_reminder: 120
+    daily_article: 120
+    checkin: 120
+    web_proactive: 120
+
+privacy:
+  persist_raw_messages: false
+  dashboard_projection: public-only
+  redact_local_paths: true
