@@ -13,7 +13,7 @@ authors = [{name = "Camellya"}]
 dependencies = []
 
 [project.optional-dependencies]
-dev = ["pytest>=8", "ruff>=0.5"]
+dev = ["pytest>=8,<9", "ruff==0.15.10"]
 
 [project.scripts]
 hina-companion = "hina_companion.cli:main"
