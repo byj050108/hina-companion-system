@@ -1,0 +1,6 @@
+repository=https://github.com/NousResearch/hermes-agent
+release=v2026.8.31
+release_image=nousresearch/hermes-agent:v2026.8.31
+release_image_digest=sha256:64923faeae267792bf9bf87fe3b4c4869e35004e360c7df01730ad801b74d524
+main_checked_commit=21b2095d00a98b8ad7b5c60b10587619c852cdb8
+checked_at=2026-09-01

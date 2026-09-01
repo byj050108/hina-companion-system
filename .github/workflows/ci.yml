@@ -32,3 +32,13 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run build
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build --target api -t hina-companion-api:ci .
+      - run: docker build --target dashboard -t hina-companion-dashboard:ci .
+      - run: docker compose config
+        env:
+          HERMES_API_KEY: ci-placeholder

@@ -6,6 +6,8 @@
 
 > 本仓库是从个人本地系统中重新整理的 clean-room 公开实现。示例数据均为虚构；不包含真实聊天、记忆、账号、密钥、声音样本或运行日志。
 
+本项目不复制 Hermes 源码：Hermes 提供 Agent Runtime，本仓库只实现陪伴编排、状态演进、隐私投影、Dashboard 和部署组合层。详细边界见 [CUSTOMIZATIONS.md](CUSTOMIZATIONS.md)，固定的上游版本见 [`upstream.lock`](upstream.lock)。
+
 ## 工程亮点
 
 - 共享非对称冷却矩阵：任务提醒可比低优先级 check-in 更快穿透，同时避免多种主动消息连续轰炸
@@ -64,7 +66,12 @@ flowchart LR
 │   ├── api.py             # localhost-only 只读 API
 │   └── tts.py             # 可选 TTS 适配器
 ├── dashboard/             # React + TypeScript + Vite PWA
+├── docker/                # Dashboard 反向代理配置
 ├── tests/                 # 策略、状态、脱敏、任务与闭环测试
+├── Dockerfile             # 自研 API 与 Dashboard 镜像
+├── docker-compose.yml     # 与官方 Hermes 镜像组合运行
+├── CUSTOMIZATIONS.md      # 上游与自研边界
+├── upstream.lock          # 已核对的 Hermes 上游版本
 ├── scripts/secret_scan.py
 ├── config.example.yaml
 └── docs/
@@ -104,6 +111,16 @@ npm run dev
 ```
 
 Vite 会将 `/api` 代理到 Python API。API 不可用时，Dashboard 会自动回退到脱敏演示状态。
+
+### Docker Compose
+
+```bash
+cp .env.example .env
+# 将 .env 中的 HERMES_API_KEY 替换为本地生成的随机值
+docker compose up -d --build
+```
+
+然后访问 `http://127.0.0.1:8080`。Hermes 状态和 Companion 状态分别保存在独立命名卷中；真实记忆、人格和平台凭证不会进入镜像或 Git。
 
 ## Hermes Agent 集成
 
@@ -159,6 +176,7 @@ CI 同时执行 Python 测试、静态检查、敏感信息扫描和前端生产
 - [架构与状态机](docs/ARCHITECTURE.md)
 - [隐私与发布边界](docs/PRIVACY.md)
 - [部署说明](docs/DEPLOYMENT.md)
+- [上游与自研边界](CUSTOMIZATIONS.md)
 - [Hermes cron 集成示例](examples/cronjobs.md)
 
 ## License

@@ -47,8 +47,9 @@ class DashboardHandler(BaseHTTPRequestHandler):
 
 
 def main() -> None:
-    server = ThreadingHTTPServer(("127.0.0.1", 8787), DashboardHandler)
-    print("Dashboard API: http://127.0.0.1:8787/api/dashboard")
+    settings = Settings.from_env()
+    server = ThreadingHTTPServer((settings.api_host, settings.api_port), DashboardHandler)
+    print(f"Dashboard API: http://{settings.api_host}:{settings.api_port}/api/dashboard")
     server.serve_forever()
 
 
